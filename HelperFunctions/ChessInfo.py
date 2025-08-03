@@ -1,5 +1,7 @@
 import chess
 
+class Piece:
+    def
 # Piece point values (example - adjust as needed)
 PIECE_POINTS = {
     chess.PAWN: 1,

@@ -2,8 +2,12 @@ import logging
 import json
 import azure.functions as func
 import chess
+from function_app import app
+# send a JSON body with gameID, currentFen, moveUci
 
-def main(req: func.HttpRequest) -> func.HttpResponse:
+@app.function_name(name="MovePiece")
+@app.route(route="MovePiece")
+def move_piece(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request for a move.')
 
     try:
