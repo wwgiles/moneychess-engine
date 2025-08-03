@@ -1,8 +1,7 @@
 from function_app import app
 import azure.functions as func
 
-@app.function_name(name="CalculatePoints")
-@app.route(route="calcpoints")
+
 def calculate_points(pieces):
     #"""Calculates total points spent on a list of pieces."""
     total_points = 0
