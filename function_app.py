@@ -3,23 +3,9 @@ import logging
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
-@app.route(route="http_trigger_test")
-def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
-    else:
-        return func.HttpResponse(
-             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-             status_code=200
-        )
+from CoreFunctions.CreateGame import create_game
+from CoreFunctions.DeployGameState import deploy_game_state
+from CoreFunctions.GameHistory import game_history
+from CoreFunctions.GameState import game_state
+from CoreFunctions.MakeMove import move_piece
+from CoreFunctions.ValidMoves import valid_moves
